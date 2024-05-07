@@ -5,23 +5,24 @@ import 'package:flutter/material.dart';
 
 Widget profileWidget({String? imageUrl, File? image}) {
   if (image == null) {
-    if (imageUrl == null || imageUrl == "")
+    if (imageUrl == null || imageUrl == "") {
       return Image.asset(
         'assets/profile_default.png',
         fit: BoxFit.cover,
       );
-    else
+    } else {
       return CachedNetworkImage(
-        imageUrl: "$imageUrl",
+        imageUrl: imageUrl,
         fit: BoxFit.cover,
         progressIndicatorBuilder: (context, url, downloadProgress) {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         },
         errorWidget: (context, url, error) => Image.asset(
           'assets/profile_default.png',
           fit: BoxFit.cover,
         ),
       );
+    }
   } else {
     return Image.file(image, fit: BoxFit.cover,);
   }

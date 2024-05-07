@@ -10,7 +10,7 @@ import 'package:instagram_clone_app/profile_widget.dart';
 class ProfileMainWidget extends StatefulWidget {
   final UserEntity currentUser;
 
-  const ProfileMainWidget({Key? key, required this.currentUser}) : super(key: key);
+  const ProfileMainWidget({super.key, required this.currentUser});
 
   @override
   State<ProfileMainWidget> createState() => _ProfileMainWidgetState();
@@ -20,7 +20,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
 
   @override
   void initState() {
-    BlocProvider.of<PostCubit>(context).getPosts(post: PostEntity());
+    BlocProvider.of<PostCubit>(context).getPosts(post: const PostEntity());
     super.initState();
   }
   @override
@@ -31,7 +31,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
           backgroundColor: backGroundColor,
           title: Text(
             "${widget.currentUser.username}",
-            style: TextStyle(color: primaryColor),
+            style: const TextStyle(color: primaryColor),
           ),
           actions: [
             Padding(
@@ -40,7 +40,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                   onTap: () {
                     _openBottomModalSheet(context);
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.menu,
                     color: primaryColor,
                   )),
@@ -56,7 +56,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 80,
                       height: 80,
                       child: ClipRRect(
@@ -70,10 +70,10 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                           children: [
                             Text(
                               "${widget.currentUser.totalPosts}",
-                              style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+                              style: const TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
                             ),
                             sizeVer(8),
-                            Text(
+                            const Text(
                               "Posts",
                               style: TextStyle(color: primaryColor),
                             )
@@ -89,10 +89,10 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                             children: [
                               Text(
                                 "${widget.currentUser.totalFollowers}",
-                                style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+                                style: const TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
                               ),
                               sizeVer(8),
-                              Text(
+                              const Text(
                                 "Followers",
                                 style: TextStyle(color: primaryColor),
                               )
@@ -108,10 +108,10 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                             children: [
                               Text(
                                 "${widget.currentUser.totalFollowing}",
-                                style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+                                style: const TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
                               ),
                               sizeVer(8),
-                              Text(
+                              const Text(
                                 "Following",
                                 style: TextStyle(color: primaryColor),
                               )
@@ -125,12 +125,12 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                 sizeVer(10),
                 Text(
                   "${widget.currentUser.name == "" ? widget.currentUser.username : widget.currentUser.name}",
-                  style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+                  style: const TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
                 ),
                 sizeVer(10),
                 Text(
                   "${widget.currentUser.bio}",
-                  style: TextStyle(color: primaryColor),
+                  style: const TextStyle(color: primaryColor),
                 ),
                 sizeVer(10),
                 BlocBuilder<PostCubit, PostState>(
@@ -139,9 +139,9 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                       final posts = postState.posts.where((post) => post.creatorUid == widget.currentUser.uid).toList();
                       return GridView.builder(
                           itemCount: posts.length,
-                          physics: ScrollPhysics(),
+                          physics: const ScrollPhysics(),
                           shrinkWrap: true,
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3, crossAxisSpacing: 5, mainAxisSpacing: 5),
                           itemBuilder: (context, index) {
                             return GestureDetector(
@@ -149,7 +149,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                                 Navigator.pushNamed(context, PageConst.postDetailPage, arguments: posts[index].postId);
 
                               },
-                              child: Container(
+                              child: SizedBox(
                                 width: 100,
                                 height: 100,
                                 child: profileWidget(imageUrl: posts[index].postImageUrl),
@@ -158,7 +158,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                           });
 
                     }
-                    return Center(child: CircularProgressIndicator(),);
+                    return const Center(child: CircularProgressIndicator(),);
                   },
                 )
               ],
@@ -176,26 +176,26 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
             decoration: BoxDecoration(color: backGroundColor.withOpacity(.8)),
             child: SingleChildScrollView(
               child: Container(
-                margin: EdgeInsets.symmetric(vertical: 10),
+                margin: const EdgeInsets.symmetric(vertical: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10.0),
                       child: Text(
                         "More Options",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18, color: primaryColor),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
-                    Divider(
+                    const Divider(
                       thickness: 1,
                       color: secondaryColor,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Padding(
@@ -206,7 +206,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                               arguments: widget.currentUser);
                           // Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage()));
                         },
-                        child: Text(
+                        child: const Text(
                           "Edit Profile",
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 16, color: primaryColor),
@@ -214,7 +214,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                       ),
                     ),
                     sizeVer(7),
-                    Divider(
+                    const Divider(
                       thickness: 1,
                       color: secondaryColor,
                     ),
@@ -227,7 +227,7 @@ class _ProfileMainWidgetState extends State<ProfileMainWidget> {
                           Navigator.pushNamedAndRemoveUntil(
                               context, PageConst.signInPage, (route) => false);
                         },
-                        child: Text(
+                        child: const Text(
                           "Logout",
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 16, color: primaryColor),

@@ -1,16 +1,31 @@
-# instagram_clone_app
 
-A new Flutter project.
+# Instagram Clone - Clean Architecture Flutter
+Instagram Clone Flutter - with Clean Architecture Firebase as backend (Full-Stack) is developed
 
-## Getting Started
+## Application Architecture
+Application is build with Clean Architecture of Robert C. Martin (Uncle Bob) TDD pattern Clean Code + Maintainable
 
-This project is a starting point for a Flutter application.
+## App Features
+Instagram Mobile App UI
+Email & Password Authentication
+Upload Posts
+Display All Users Posts
+Like & Comment on Posts + Replay to Comments
+Search Users
+See recently uploaded Posts on Search Page
+Follow + UnFollow
+Display User Posts, Followers & Following
+Sign Out User
+YouTube Channel
 
-A few resources to get you started if this is your first Flutter project:
+Feedback
+If you have any feedback, please reach out to me at khanpaindamuhammad@gmail.com
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Best Wishes
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+The source code is open source = FREE.
+
+To show some love 💖 by starring ⭐ the Repository
+
+Enjoy!

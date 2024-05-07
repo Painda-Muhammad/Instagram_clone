@@ -8,14 +8,14 @@ import 'package:instagram_clone_app/injection_container.dart' as di;
 
 class FollowersPage extends StatelessWidget {
   final UserEntity user;
-  const FollowersPage({Key? key, required this.user}) : super(key: key);
+  const FollowersPage({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backGroundColor,
       appBar: AppBar(
-        title: Text("Followers"),
+        title:const Text("Followers"),
         backgroundColor: backGroundColor,
       ),
       body: Padding(
@@ -29,7 +29,7 @@ class FollowersPage extends StatelessWidget {
                     stream: di.sl<GetSingleUserUseCase>().call(user.followers![index]),
                     builder: (context, snapshot) {
                       if (snapshot.hasData == false) {
-                        return CircularProgressIndicator();
+                        return const CircularProgressIndicator();
                       }
                       if (snapshot.data!.isEmpty) {
                         return Container();
@@ -43,7 +43,7 @@ class FollowersPage extends StatelessWidget {
                         child: Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.symmetric(vertical: 10),
+                              margin: const EdgeInsets.symmetric(vertical: 10),
                               width: 40,
                               height: 40,
                               child: ClipRRect(
@@ -52,7 +52,7 @@ class FollowersPage extends StatelessWidget {
                               ),
                             ),
                             sizeHor(10),
-                            Text("${singleUserData.username}", style: TextStyle(color: primaryColor, fontSize: 15, fontWeight: FontWeight.w600),)
+                            Text("${singleUserData.username}", style: const TextStyle(color: primaryColor, fontSize: 15, fontWeight: FontWeight.w600),)
                           ],
                         ),
                       );
@@ -67,7 +67,7 @@ class FollowersPage extends StatelessWidget {
   }
 
   _noFollowersWidget() {
-    return Center(
+    return const Center(
       child: Text("No Followers", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),),
     );
   }

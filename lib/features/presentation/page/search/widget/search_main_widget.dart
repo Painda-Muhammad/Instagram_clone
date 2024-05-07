@@ -9,19 +9,19 @@ import 'package:instagram_clone_app/features/presentation/page/search/widget/sea
 import 'package:instagram_clone_app/profile_widget.dart';
 
 class SearchMainWidget extends StatefulWidget {
-  const SearchMainWidget({Key? key}) : super(key: key);
+  const SearchMainWidget({super.key});
 
   @override
   State<SearchMainWidget> createState() => _SearchMainWidgetState();
 }
 
 class _SearchMainWidgetState extends State<SearchMainWidget> {
-  TextEditingController _searchController = TextEditingController();
+ final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
-    BlocProvider.of<UserCubit>(context).getUsers(user: UserEntity());
-    BlocProvider.of<PostCubit>(context).getPosts(post: PostEntity());
+    BlocProvider.of<UserCubit>(context).getUsers(user: const UserEntity());
+    BlocProvider.of<PostCubit>(context).getPosts(post: const PostEntity());
     super.initState();
 
     _searchController.addListener(() {
@@ -70,7 +70,7 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
                           child: Row(
                             children: [
                               Container(
-                                margin: EdgeInsets.symmetric(vertical: 10),
+                                margin: const EdgeInsets.symmetric(vertical: 10),
                                 width: 40,
                                 height: 40,
                                 child: ClipRRect(
@@ -79,7 +79,7 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
                                 ),
                               ),
                               sizeHor(10),
-                              Text("${filterAllUsers[index].username}", style: TextStyle(color: primaryColor, fontSize: 15, fontWeight: FontWeight.w600),)
+                              Text("${filterAllUsers[index].username}", style: const TextStyle(color: primaryColor, fontSize: 15, fontWeight: FontWeight.w600),)
                             ],
                           ),
                         );
@@ -91,9 +91,9 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
                           return Expanded(
                             child: GridView.builder(
                                 itemCount: posts.length,
-                                physics: ScrollPhysics(),
+                                physics: const ScrollPhysics(),
                                 shrinkWrap: true,
-                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 3, crossAxisSpacing: 5, mainAxisSpacing: 5),
                                 itemBuilder: (context, index) {
                                   return GestureDetector(
@@ -101,7 +101,7 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
                                       Navigator.pushNamed(context, PageConst.postDetailPage,
                                           arguments: posts[index].postId);
                                     },
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 100,
                                       height: 100,
                                       child: profileWidget(
@@ -112,7 +112,7 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
                                 }),
                           );
                         }
-                        return Center(child: CircularProgressIndicator(),);
+                        return const Center(child: CircularProgressIndicator(),);
                       },
                     )
                   ],
@@ -120,7 +120,7 @@ class _SearchMainWidgetState extends State<SearchMainWidget> {
               );
 
             }
-            return Center(child: CircularProgressIndicator(),);
+            return const Center(child: CircularProgressIndicator(),);
           },
         ),
       ),
